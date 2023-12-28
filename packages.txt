@@ -1,0 +1,7 @@
+Required Packages:
+
+    npm i axios
+    npm i react-router
+    npm i react-router-dom
+    npm i react-hook-form
+    
