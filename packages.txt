@@ -4,4 +4,10 @@ Required Packages:
     npm i react-router
     npm i react-router-dom
     npm i react-hook-form
+    npm i react-share
+    npm i react-icons
+    npm i reactjs-localstorage
+    npm i react-modal
+    
+
     

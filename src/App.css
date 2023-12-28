@@ -3,6 +3,12 @@
   
 }
 
+.extra {
+
+  display: inline-block;
+
+}
+
 body {
   background-color: teal;
   color: whitesmoke;
@@ -53,7 +59,8 @@ nav a:hover {
 .logo {
   width: 50px;
   text-align: left;
-  margin-top: 0;
+  margin-top: 1rem;
+  margin-left: 1rem;
   
 }
 

@@ -6,7 +6,7 @@ const Promotion = () => {
 
     <div>
 
-        <h1>Prmotion</h1>
+        <h1>Promotion</h1>
 
     </div>
 
