@@ -1,6 +1,7 @@
 import React, {useContext} from 'react';
 import { GlobalContext } from './GlobalStores';
 import {FaPaw} from "react-icons/fa";
+import { reactLocalStorage } from 'reactjs-localstorage';
 
 const Logout = () => {
 
@@ -19,6 +20,11 @@ const Logout = () => {
     }
 
     updateInfo(newInfo);
+
+    reactLocalStorage.remove("newMemInfo");
+    reactLocalStorage.remove("newMemToken");
+
+    setTimeout(() => window.location.assign('/'), 4000);
 
   }
 

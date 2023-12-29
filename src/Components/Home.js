@@ -15,7 +15,7 @@ const Home = () => {
         {
 
             email   ? (<>   
-                            <h1>Welcome back, {name}</h1>
+                            <h1>Welcome back, <span style={{color: 'orange'}}>{name}</span></h1>
                             <img className='showcat' src={logincat} alt='logincat'/>    </>) 
             
                     : (<>   

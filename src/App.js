@@ -26,17 +26,17 @@ const App = () => {
 
             <Routes>
 
-              <Route path='/' element={<Home/>} />
+              <Route path='/' exact element={<Home/>} />
               <Route path='/home' exact element={<Home/>} />
               <Route path='/funcat' element={<FunCat/>} />
               <Route path='/about' element={<About/>} />
-              <Route path='/promotion' element={<Promotion/>} />
+              <Route path='/promotion' exact element={<Promotion/>} />
               <Route path='/register' element={<Register/>} />
               <Route path='/login' element={<Login/>} />
               <Route path='/logout' element={<Logout/>} />
               <Route path='*' element={<NotFound/>} />
               <Route path='/profile' element={<Profile/>} />
-
+              
             </Routes>
 
           </div>

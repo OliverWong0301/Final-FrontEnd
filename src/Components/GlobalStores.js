@@ -1,12 +1,24 @@
-import React, {useState, createContext, useEffect} from 'react'
+import React, {useState, createContext, useEffect} from 'react';
+import { reactLocalStorage } from 'reactjs-localstorage';
 
-const initialInfo = {
+var initialInfo = { // This variable must be var or let because it is mutable
 
     userid: null,
     name: null,
     email: null,
     password: null,
     memtype: null
+
+}
+
+// Do the localStorage here:
+const checkLocal = reactLocalStorage.getObject("newMemInfo");
+console.log("Check local storage: ", checkLocal);
+
+if(Object.entries(checkLocal).length > 0) {
+
+    // eslint-disable-next-line
+    initialInfo = {...checkLocal}
 
 }
 
@@ -25,6 +37,7 @@ export const GlobalStores = ({children}) => {
 
     useEffect(() => {
 
+        // eslint-disable-next-line
         updateInfo(initialInfo);
 
     }, []);

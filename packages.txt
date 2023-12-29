@@ -8,6 +8,7 @@ Required Packages:
     npm i react-icons
     npm i reactjs-localstorage
     npm i react-modal
+    npm i react-toastify
     
 
     

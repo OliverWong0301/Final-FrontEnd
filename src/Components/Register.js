@@ -5,10 +5,11 @@ import axios from 'axios';
 import { Keys } from './Key';
 import { GlobalContext } from './GlobalStores';
 import { FaPaw } from "react-icons/fa";
+import { reactLocalStorage } from 'reactjs-localstorage';
 
 const Register = () => {
 
-    const {register, handleSubmit, formState: {errors}} = useForm();
+    const {register, handleSubmit, reset, formState: {errors}} = useForm();
 
     const {updateInfo} = useContext(GlobalContext)
 
@@ -31,10 +32,12 @@ const Register = () => {
 
         }).then(response => {
 
+            const {success, token} = response.data;
+
             // This line of code helps us to see everything included token were responsed from server
             console.log("Response data from server: ", response.data);
 
-            if (response.data.success === false) {
+            if (success === false) {
 
                 console.log("Response is failed");
                 return null;
@@ -52,7 +55,12 @@ const Register = () => {
 
             updateInfo(newInfo);
 
+            reactLocalStorage.setObject("newMemInfo", newInfo);
+            reactLocalStorage.set("newMemToken", token);
 
+            reset();
+
+            setTimeout(() => window.location.assign('/'), 4000);
 
         }).catch(err => {
 
