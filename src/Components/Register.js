@@ -44,12 +44,16 @@ const Register = () => {
 
             }
 
-            const {_id, name, email, password, memtype} = response.data.data;
+            const {_id, name, email, password, memtype, createAt} = response.data.data;
 
             const newInfo = {
 
                 userid: _id,
-                name, email, password, memtype
+                name: name,
+                email: email,
+                password: password,
+                memtype: memtype,
+                createAt: createAt
 
             }
 

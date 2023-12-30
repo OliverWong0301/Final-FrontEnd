@@ -11,7 +11,7 @@ const Profile = () => {
 
   const {updateInfo} = useContext(GlobalContext);
   const {info} = useContext(GlobalContext);
-  const {userid, name, email, memtype} = info;
+  const {userid, name, email, memtype, createAt} = info;
 
   const {WEB_BASE_URL, API_UPDATE_USER} = Keys;
 
@@ -56,12 +56,15 @@ const Profile = () => {
 
       }
 
-      const {_id, name, email, memtype} = response.data.data;
+      const {_id, name, email, memtype, createAt} = response.data.data;
 
       const newInfo = {
 
         userid: _id,
-        name, email, memtype
+        name: name,
+        email: email,
+        memtype: memtype,
+        createAt: createAt
 
       }
 
@@ -121,6 +124,8 @@ const Profile = () => {
             <p><b>Your UserID:</b> {userid}</p>
             
             <p><b>Membership type:</b> {memtype}</p>
+
+            <p><b>Registered date:</b> {createAt}</p>
           </div>
         </div>
 

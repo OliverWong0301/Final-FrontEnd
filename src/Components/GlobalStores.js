@@ -7,7 +7,8 @@ var initialInfo = { // This variable must be var or let because it is mutable
     name: null,
     email: null,
     password: null,
-    memtype: null
+    memtype: null,
+    createAt: null
 
 }
 
