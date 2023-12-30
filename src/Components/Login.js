@@ -6,7 +6,6 @@ import './Register.css';
 import axios from 'axios';
 import { Keys } from './Key';
 import { reactLocalStorage } from 'reactjs-localstorage';
-import './Register.css';
 
 const Login = () => {
 
@@ -83,6 +82,8 @@ const Login = () => {
           <button type='submit' className='btn'>Sign In &nbsp;<FaPaw/></button>
 
         </form>
+
+        <h2>Not yet a member? <a href='/register'>Register</a> with us today!</h2>
 
     </div>
 

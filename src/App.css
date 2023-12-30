@@ -41,15 +41,20 @@ nav a {
   padding: 0.5rem;
   color:whitesmoke;
   text-decoration: rgb(55, 59, 185);
-  font-weight: 500;
-  font-size: 1rem;
+  font-weight: bolder;
+  font-size: 1.2rem;
 }
 
 a {
   text-decoration: none;
-  color: whitesmoke;
-  font-weight: 500;
-  font-size: 1rem;
+  color: rgb(181, 224, 25);
+  font-weight: bolder;
+  font-size: 2rem;
+  font-family:serif;
+}
+
+a:hover {
+  color: orange;
 }
 
 nav a:hover {

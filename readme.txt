@@ -207,3 +207,16 @@ Controller:
 
 =======================================
 
+{/*<h1><span style={{color:'orange'}}>{name}</span>'s Profile</h1>
+
+        <div className='profile-info'>
+          <div className='profile-content'>
+            <p><b>Your name:</b> {name}</p>
+            
+            <p><b>Your email:</b> {email}</p>
+            
+            <p><b>Your UserID:</b> {userid}</p>
+            
+            <p><b>Membership type:</b> {memtype}</p>
+          </div>
+  </div>*/}

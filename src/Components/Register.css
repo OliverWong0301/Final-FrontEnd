@@ -6,6 +6,30 @@
     width: 60%;
     margin: 0 auto;
   }
+
+.profile-info {
+
+    display: inline-block;
+    max-width: 25vw;
+    min-width: 210pt;
+    border: 5px solid whitesmoke;
+    border-radius: 10px;
+    padding-bottom: 15px;
+    padding-left: 8px;
+    padding-right: 3px;
+    margin-top: 15px;
+    margin-left: none;
+    text-align: left;
+    background-color: grey;
+    
+  }
+  
+.profile-content p {
+  
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1rem;
+  
+  }
   
   label {
     text-align: left;
