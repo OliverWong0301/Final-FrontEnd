@@ -51,7 +51,7 @@ const Profile = () => {
       const {success} = response.data;
       if(success === false) {
 
-        console.log("Response is failed");
+        console.log("This email is already existed in our system");
         return null;
 
       }
@@ -109,7 +109,7 @@ const Profile = () => {
 
             </select>
 
-          <button type='submit' className='btn'>Sign In &nbsp;<FaPaw/></button>
+          <button type='submit' className='btn'>Update Now &nbsp;<FaPaw/></button>
 
         </form>
 
