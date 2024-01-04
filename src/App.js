@@ -12,6 +12,7 @@ import Logout from './Components/Logout';
 import NotFound from './Components/NotFound';
 import Profile from './Components/Profile';
 import { GlobalStores } from './Components/GlobalStores';
+import CatAdoptionDetail from './Components/CatAdoptionDetail';
 
 const App = () => {
 
@@ -31,6 +32,7 @@ const App = () => {
               <Route path='/funcat' element={<FunCat/>} />
               <Route path='/about' element={<About/>} />
               <Route path='/promotion' exact element={<Promotion/>} />
+              <Route path='/promotion/:slug' element={<CatAdoptionDetail/>} />
               <Route path='/register' element={<Register/>} />
               <Route path='/login' element={<Login/>} />
               <Route path='/logout' element={<Logout/>} />
