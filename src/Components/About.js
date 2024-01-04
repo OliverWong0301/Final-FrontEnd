@@ -1,4 +1,5 @@
 import React from 'react'
+import sleeping from '../Images/sleepingkitten.jpg'
 
 const About = () => {
 
@@ -7,6 +8,8 @@ const About = () => {
     <div>
 
         <h1>About Us</h1>
+
+        <img className='showcat' src={sleeping} alt='about' />
 
     </div>
 

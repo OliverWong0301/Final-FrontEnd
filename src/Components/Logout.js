@@ -24,7 +24,7 @@ const Logout = () => {
     reactLocalStorage.remove("newMemInfo");
     reactLocalStorage.remove("newMemToken");
 
-    setTimeout(() => window.location.assign('/'), 3000);
+    setTimeout(() => window.location.assign('/'), 2000);
 
   }
 

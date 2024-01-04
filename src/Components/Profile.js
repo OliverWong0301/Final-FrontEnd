@@ -1,3 +1,4 @@
+import Modal from 'react-modal';
 import React, {useContext} from 'react';
 import { GlobalContext } from './GlobalStores';
 import {useForm} from 'react-hook-form';
@@ -6,16 +7,36 @@ import { FaPaw } from 'react-icons/fa';
 import { Keys } from './Key';
 import axios from 'axios';
 import { reactLocalStorage } from 'reactjs-localstorage';
+const {WEB_BASE_URL, API_UPDATE_USER, API_DELETE_USER} = Keys;
+
+const customStyles = {
+  content: {
+    top: '50%',
+    left: '50%',
+    right: 'auto',
+    bottom: 'auto',
+    marginRight: '-50%',
+    transform: 'translate(-50%, -50%)',
+    backgroundColor: 'teal'
+  },
+};
+
+// Make sure to bind modal to your appElement (https://reactcommunity.org/react-modal/accessibility/)
+Modal.setAppElement('#root');
+
 
 const Profile = () => {
 
-  const {updateInfo} = useContext(GlobalContext);
-  const {info} = useContext(GlobalContext);
+  const {info, updateInfo} = useContext(GlobalContext);
   const {userid, name, email, memtype, createAt} = info;
 
-  const {WEB_BASE_URL, API_UPDATE_USER} = Keys;
+  // Set up Modal:
+  const [modalIsOpen, setIsOpen] = React.useState(false);
 
+  // Our end-point API for update and delete:
   const UPDATE_API_END_POINT = `${WEB_BASE_URL}${API_UPDATE_USER}${userid}`;
+  const DELETE_API_END_POINT = `${WEB_BASE_URL}${API_DELETE_USER}${userid}`;
+
 
   const {register, handleSubmit, reset, formState: {errors}} = useForm();
 
@@ -44,7 +65,7 @@ const Profile = () => {
       name: data.Name,
       email: data.Email,
       memtype: data.Memtype,
-      psjwt: psjwt
+      psjwt: psjwt // You can remove it
 
     }, config).then(response => {
 
@@ -74,11 +95,71 @@ const Profile = () => {
 
       reset();
 
-      setTimeout(() => window.location.assign('/'), 4000);
+      setTimeout(() => window.location.assign('/'), 2000);
 
     }).catch(err => {
 
-      console.log("Wrong format", err);
+      console.log("Wrong format", err.message);
+
+    })
+
+  }
+
+  const onDelete = () => {
+
+    const tokenCheck = reactLocalStorage.get("newMemToken");
+    console.log("Check token: ", tokenCheck);
+
+    const jspwt = tokenCheck;
+
+    var config = {
+
+      headers: {
+
+        authorization: "Bearer " + jspwt
+
+      }
+
+    }
+
+    axios.delete(DELETE_API_END_POINT, config).then(response => {
+
+      const {success} = response.data;
+      if (success === false) {
+
+        console.log("Invalid id or token");
+        return null;
+
+      } else {
+
+        console.log("Account is deleted successfully");
+
+      }
+
+      const newInfo = {
+
+        userid: null,
+        name: null,
+        email: null,
+        password: null,
+        memtype: null,
+        createAt: null
+
+      } 
+
+      updateInfo(newInfo);
+
+      reactLocalStorage.remove("newMemInfo");
+      reactLocalStorage.remove("newMemToken");
+
+      reset();
+
+      setTimeout(() => window.location.assign('/'), 2000);
+
+
+    }).catch(err => {
+
+      console.log("Deletion errors", err.message)
 
     })
 
@@ -109,9 +190,27 @@ const Profile = () => {
 
             </select>
 
-          <button type='submit' className='btn'>Update Now &nbsp;<FaPaw/></button>
-
+          <div className='btngroup'>
+            <button type='submit' className='btn2'>Update Now &nbsp;<FaPaw/></button>
+            <button type='button' className='btn2' onClick={() => setIsOpen(true)}>Delete Account &nbsp;<FaPaw/></button>
+          </div>
         </form>
+
+        <Modal isOpen={modalIsOpen} style={customStyles} onRequestClose={() => setIsOpen(false)}>
+
+          <div>
+            <h3>Member's Pet Store</h3><br/><hr/>
+            <p>Hi, <span className='memname' >{name}</span>, </p>
+            <p>Are you sure you want to delete your account?</p>
+            <div className='btngroup'>
+
+              <button className='btn2' onClick={() => {onDelete(); setIsOpen(false)} }>Yes</button>
+              <button className='btn2' onClick={() => setIsOpen(false)}>No</button>
+
+            </div>
+          </div>
+
+        </Modal>
 
       <h2>Current <span style={{color: "orange"}} >{name}</span>'s Profile</h2>
 

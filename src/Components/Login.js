@@ -57,7 +57,7 @@ const Login = () => {
 
       reset();
 
-      setTimeout(() => window.location.assign('/'), 3000);
+      setTimeout(() => window.location.assign('/'), 2000);
 
     }).catch(err => {
 
